@@ -1,0 +1,514 @@
+/*Settings*/
+@import "settings";
+
+@import
+//   "../foundation/scss/foundation/components/accordion",
+//   "../foundation/scss/foundation/components/alert-boxes",
+//   "../foundation/scss/foundation/components/block-grid",
+//   "../foundation/scss/foundation/components/breadcrumbs",
+//   "../foundation/scss/foundation/components/button-groups",
+//   "../foundation/scss/foundation/components/buttons",
+//   "../foundation/scss/foundation/components/clearing",
+//   "../foundation/scss/foundation/components/dropdown",
+//   "../foundation/scss/foundation/components/dropdown-buttons",
+//   "../foundation/scss/foundation/components/flex-video",
+     "../foundation/scss/foundation/components/forms",
+     "../foundation/scss/foundation/components/grid",
+//   "../foundation/scss/foundation/components/inline-lists",
+//   "../foundation/scss/foundation/components/joyride",
+//   "../foundation/scss/foundation/components/keystrokes",
+//   "../foundation/scss/foundation/components/labels",
+//   "../foundation/scss/foundation/components/magellan",
+//   "../foundation/scss/foundation/components/orbit",
+//   "../foundation/scss/foundation/components/pagination",
+//   "../foundation/scss/foundation/components/panels",
+//   "../foundation/scss/foundation/components/pricing-tables",
+//   "../foundation/scss/foundation/components/progress-bars",
+//   "../foundation/scss/foundation/components/reveal",
+//   "../foundation/scss/foundation/components/side-nav",
+//   "../foundation/scss/foundation/components/split-buttons",
+//   "../foundation/scss/foundation/components/sub-nav",
+//   "../foundation/scss/foundation/components/switches",
+//   "../foundation/scss/foundation/components/tables",
+//   "../foundation/scss/foundation/components/tabs",
+//   "../foundation/scss/foundation/components/thumbs",
+//   "../foundation/scss/foundation/components/tooltips",
+//   "../foundation/scss/foundation/components/top-bar",
+     "../foundation/scss/foundation/components/type",
+//   "../foundation/scss/foundation/components/offcanvas",
+     "../foundation/scss/foundation/components/visibility";
+
+/*Tools*/
+
+@mixin law-draft-hover-transition() {
+  transition: all ease-in-out 0.2s; 
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+
+/*Base*/
+
+body {
+  padding-top: 80px;
+  @media #{$small-only, $medium-only} { 
+    padding-top: 50px;
+  }
+}
+
+/*Components*/
+
+//Hamburger Icon
+
+.main-nav__mobile-icon {
+  display: none;
+  float: left;
+  width: 35px;
+  height: 24px;
+  position: relative;
+  margin: 0;
+  transform: rotate(0deg) translateY(8px);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  z-index: 50;
+  &.active ~ .main-nav__menu {
+    transform: translateX(0);
+  }
+  @media #{$small-only, $medium-only} { 
+    display: block;
+  }
+
+}
+
+.main-nav__mobile-icon span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: #28D179;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.main-nav__mobile-icon span:nth-child(1) {
+  top: 0px;
+  transform-origin: left center;
+}
+
+.main-nav__mobile-icon span:nth-child(2) {
+  top: 10px;
+  transform-origin: left center;
+}
+
+.main-nav__mobile-icon span:nth-child(3) {
+  top: 20px;
+  transform-origin: left center;
+}
+
+.main-nav__mobile-icon.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: -3px;
+  left: 8px;
+}
+
+.main-nav__mobile-icon.active span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.main-nav__mobile-icon.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 22px;
+  left: 8px;
+}
+
+//End Hamburger Icon
+
+.main-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #3b4747;
+  padding: 20px 0;
+  z-index: 50;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 1px 4px rgba(0, 0, 0, 0.23);
+  @media #{$small-only, $medium-only} { 
+    height: 50px;
+    padding: 5px 0.75rem;
+  }
+}
+
+.main-nav__item {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0.55rem 1rem;
+}
+
+.main-nav__logo {
+  display: inline-block;
+  float: left;
+  margin: 0;
+  @media #{$small-only, $medium-only} { 
+    float: right;
+  }
+
+}
+
+.logo--nav {
+  height: 40px;
+  @media #{$small-only, $medium-only} { 
+  height: 32px;
+    margin-top: 2px;
+  }
+}
+
+.logo--text {
+  @media #{$small-only, $medium-only} { 
+    display: none;
+  }
+}
+
+.main-nav__search-box {
+  border-radius: 3rem;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.search-box__input {
+  display: inline-block;
+  vertical-align: middle;
+  & input {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    height: 1.75rem;
+    &:focus {
+      background-color: transparent;
+    }
+    @media #{$small-only} { 
+      width: 7rem;
+    }
+  }
+}
+
+.search-box__submit {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  padding: 0 0.25rem;
+  & button {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    color: #CCCCCC;
+    transition: color ease-in-out 0.2s;
+    &:hover {
+      color: #3b4747;
+    }
+  }
+}
+
+.main-nav__menu {
+  margin: 0;
+  font-family: 'Fjalla One', sans-serif;
+  @media #{$small-only, $medium-only} {
+    position: absolute;
+    transform: translateX(-100%);
+    left: 0;
+    top: 0;
+    height: 100vh;
+    padding: 1rem;
+    padding-left: 0.65rem;
+    padding-top: 4rem;
+    background-color: #3B4747;
+    transition: all cubic-bezier(.55,0,.1,1) 0.3s;
+  }
+}
+
+.menu__item {
+  display: inline-block;
+  @media #{$small-only, $medium-only} {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.menu__icon {
+  position: relative;
+  width: 1.5rem;
+  text-align: center;
+  margin-right: 0.5rem;
+  padding-right: 0.5rem;
+  color: #fff !important;
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    border-radius: 2px;
+    height: 100%;
+    width: 2px;
+    background-color: white;
+  }
+}
+
+.menu__link {
+  color: #fff;
+  font-weight: 600;
+  margin: 0 0.5rem;
+  transition: all ease-in-out 0.2s;
+  &:hover {
+    color: #28D179;
+  }
+}
+
+.external-link--edemocracia__image {
+  height: 1.8rem;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transition: border ease-in-out 0.2s;
+  &:hover {
+    border-color: #fff;
+  }
+}
+
+.law-drafts {
+  background: url(../img/bg-noise.png);
+}
+
+.law-drafts__filter {
+    position: absolute;
+    margin: 0;
+    bottom: 0.925rem;
+    right: 0;
+    @media #{$small-only, $medium-only} {
+      position: static;
+      margin-bottom: 1rem;
+    }
+}
+
+.section__header {
+  position: relative;
+  @media #{$small-only} {
+    text-align: center;
+  }
+}
+
+.filter__item {
+  position: relative;
+  display: inline-block;
+  padding: 0px 1rem;
+  font-weight: 600;
+  color: #949494;
+  cursor: pointer;
+  transition: color ease-in-out 0.2s;
+  &:hover, &.active {
+    color: $body-font-color;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: inline-block;
+    border-radius: 2px;
+    height: 1rem;
+    width: 2px;
+    background-color: #28D179;
+  }
+  &--no-separator {
+    &::after {
+      display: none;
+    }
+  }
+  @media #{$small-only, $medium-only} {
+    padding: 0px 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
+.header__item--law-drafts {
+  display: inline-block;
+}
+
+.title__text {
+  font-family: 'Fjalla One', sans-serif;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.25);
+  &::before {
+    content: '';
+    display: block;
+    width: 80%;
+    height: 0.5rem;
+    margin-bottom: 0.25rem;
+    background-color: #28D179;
+  }
+}
+
+.law-draft {
+  position: relative;
+  display: block;
+  max-width: 75.6rem;
+  color: $body-font-color;
+  @media #{$small-only} {
+    margin-bottom: 0.5rem;
+  }
+  &:hover {
+    color: #fff;
+    & .law-draft__icon {
+      background-color: #28D17A;
+      color: #fff;
+      border-color: #fff;
+    }
+    & .law-draft__block {
+      background-color: #28D17A;
+    }
+    & .law-draft__heading, & .law-draft__additional-info, & .law-draft__subheading, & .proposals__ammount {
+      color: #fff;
+    }
+    & .law-draft__additional-info::before {
+      background-color: #fff;
+    }
+  }
+}
+
+.law-draft__block {
+  display: table-cell;
+  background-color: white;
+  background-clip: padding-box;
+  border: 0.3rem solid transparent;
+  padding: 1rem;
+  vertical-align: middle;
+  @include law-draft-hover-transition();
+  @media #{$small-only} {
+    display: block;
+    border: 0;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.law-draft__content {
+  width: 100%;
+  font-size: 0;
+}
+
+.law-draft__content-container {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.law-draft__content-container--icon {
+  width: 7rem;
+  position: relative;
+  padding-right: 1rem;
+  @media #{$small-only} {
+    display: none;
+  }
+}
+
+.law-draft__icon {
+  font-size: 2.3rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  line-height: 3.9rem;
+  border: 0.3rem solid #28D17A;
+  border-radius: 50%;
+  margin: auto;
+  text-align: center;
+  @include law-draft-hover-transition();
+}
+
+.law-draft__heading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  @include law-draft-hover-transition();
+}
+
+.law-draft__text {
+  font-weight: 700;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.law-draft__text--description {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.law-draft__text--status {
+  float: left;
+  margin-bottom: 0;
+  @media #{$small-only, $medium-only} {
+    float: none;
+  }
+}
+
+.law-draft__text--date {
+  float: right;
+  margin-bottom: 0;
+  @media #{$small-only, $medium-only} {
+    float: none;
+  }
+}
+
+.law-draft__additional-info {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding-left: 0.5rem;
+  color: #28D179;
+  @include law-draft-hover-transition();
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    border-radius: 2px;
+    height: 100%;
+    width: 2px;
+    background-color: #28D179;
+    @include law-draft-hover-transition();
+  }
+}
+
+.law-draft__subheading {
+  color: $body-font-color;
+  @include law-draft-hover-transition();
+}
+
+.law-draft__proposals {
+  text-align: center;
+  font-weight: 700;
+  min-width: 8rem;
+  @media #{$small-only} {
+    float: none;
+    padding-top: 0;
+  }
+}
+
+.proposals__ammount {
+  display: block;
+  font-size: 1.5rem;
+  color: #28D179;
+  @include law-draft-hover-transition();
+}
+
+// Trumps
+
+.container {
+  position: relative;
+}
+
+.pad {
+  padding: 2rem 0.5rem;
+}
